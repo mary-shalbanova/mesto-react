@@ -8,18 +8,10 @@ function PopupWithForm({
   isOpen,
   onClose,
 }) {
-  React.useEffect(() => {
-    isOpen
-      ? document
-          .querySelector(`.popup_type_${name}`)
-          .classList.add('popup_opened')
-      : document
-          .querySelector(`.popup_type_${name}`)
-          .classList.remove('popup_opened');
-  }, [isOpen]);
-
   return (
-    <section className={`popup popup_type_${name}`}>
+    <section
+      className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`}
+    >
       <div className='popup__container'>
         <button
           type='button'
