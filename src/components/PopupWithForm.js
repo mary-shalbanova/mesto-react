@@ -5,8 +5,11 @@ function PopupWithForm({
   name,
   children,
   buttonTitle,
+  buttonLoadingTitle,
   isOpen,
   onClose,
+  onSubmit,
+  isLoading,
 }) {
   return (
     <section
@@ -20,10 +23,15 @@ function PopupWithForm({
           onClick={onClose}
         />
         <h2 className='popup__header'>{title}</h2>
-        <form className='form form_type_edit-profile' name={name} noValidate=''>
+        <form
+          className='form form_type_edit-profile'
+          name={name}
+          noValidate={true}
+          onSubmit={onSubmit}
+        >
           {children}
           <button type='submit' className='button form__submit-button'>
-            {buttonTitle}
+            {isLoading ? buttonLoadingTitle : buttonTitle}
           </button>
         </form>
       </div>

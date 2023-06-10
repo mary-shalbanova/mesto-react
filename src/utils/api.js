@@ -74,6 +74,10 @@ class Api {
     return this._handleResponse(res);
   }
 
+  async changeLikeCardStatus(cardId, isLiked) {
+    return !isLiked ? await this.putLike(cardId) : await this.deleteLike(cardId);
+  }
+
   async changeAvatar(image) {
     const res = await fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
